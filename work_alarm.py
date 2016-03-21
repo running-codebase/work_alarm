@@ -9,8 +9,8 @@ import subprocess
 def say(words):
     subprocess.Popen(args=["say " + words], shell=True)
 
-def run(start_hour, increment):
-    start_time = datetime.datetime(date.today().year, date.today().month, date.today().day, int(start_hour))
+def run(increment):
+    start_time = datetime.datetime(date.today().year, date.today().month, date.today().day)
     time_delta = datetime.timedelta(minutes=int(increment))
 
     while (start_time < datetime.datetime.now()):
@@ -40,10 +40,10 @@ def run(start_hour, increment):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 3:
-        print "Usage: work_alarm.py <start hour> <increment in minutes>"
+    if len(sys.argv) < 2:
+        print "Usage: work_alarm.py <increment in minutes>"
         exit()
-    run(sys.argv[1], sys.argv[2])
+    run(sys.argv[1])
 
 
 
